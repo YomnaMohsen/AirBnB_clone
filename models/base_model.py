@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Base_model class module"""
+"""Defines Base_model class """
 
 import uuid
 from datetime import datetime
@@ -8,7 +8,11 @@ class BaseModel:
     """Base class for all subclasses"""
 
     def __init__(self, *args, **kwargs):
-        """Initializes Basemodel class"""
+        """Initializes Basemodel class
+        Args:
+        args(unused): tuple of variables
+        kwargs: (dict) key/val pairs of attributes
+        """
         if (len(kwargs) == 0):
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
