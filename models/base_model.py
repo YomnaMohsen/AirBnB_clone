@@ -3,7 +3,7 @@
 
 import uuid
 from datetime import datetime
-import models # to see storage
+import models   # to see storage
 
 
 class BaseModel:
@@ -26,23 +26,22 @@ class BaseModel:
                     if (key != 'updated_at' and key != 'created_at'):
                         self.__dict__[key] = val
                     else:
-                        self.__dict__[key] = datetime.fromisoformat(val)    
-
+                        self.__dict__[key] = datetime.fromisoformat(val)
 
     def __str__(self):
         """custom __str__ fn"""
         cls_name = self.__class__.__name__
         return "[{}] ({}) {}".format(cls_name, self.id, self.__dict__)
-    
+
     def save(self):
-        """updates the public instance attribute 
+        """updates the public instance attribute
         updated_at with the current datetime"""
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
         """returns a dictionary containing all keys/values
-         of __dict__ of the instance""" 
+         of __dict__ of the instance"""
         dict = {}
         for key, val in self.__dict__.items():
             if (key != 'updated_at' and key != 'created_at'):
