@@ -14,24 +14,24 @@ class BaseModel:
         Args:
         args(unused): tuple of variables
         kwargs: (dict) key/val pairs of attributes
-        """
-        
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
-        models.storage.new(self)
-        if (len(kwargs) != 0):
+       """
+        if not kwargs:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+            models.storage.new(self) 
+        else:
             for key, val in kwargs.items():
                 if (key != '__class__'):
                     if (key != 'updated_at' and key != 'created_at'):
                         self.__dict__[key] = val
                     else:
                         self.__dict__[key] = datetime.fromisoformat(val)
+                      
 
     def __str__(self):
         """custom __str__ fn"""
-        cls_name = self.__class__.__name__
-        return "[{}] ({}) {}".format(cls_name, self.id, self.__dict__)
+        return f"[{self.__class__.__name__}] ({self.id}) <{self.__dict__}>"
 
     def save(self):
         """updates the public instance attribute
