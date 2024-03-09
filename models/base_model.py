@@ -15,12 +15,12 @@ class BaseModel:
         args(unused): tuple of variables
         kwargs: (dict) key/val pairs of attributes
         """
-        if (len(kwargs) == 0):
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
-            models.storage.new(self)
-        else:
+        
+        self.id = str(uuid.uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
+        models.storage.new(self)
+        if (len(kwargs) != 0):
             for key, val in kwargs.items():
                 if (key != '__class__'):
                     if (key != 'updated_at' and key != 'created_at'):
