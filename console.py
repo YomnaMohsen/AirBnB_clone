@@ -4,6 +4,7 @@
 import cmd
 from models.base_model import BaseModel
 import shlex
+from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
@@ -38,7 +39,19 @@ class HBNBCommand(cmd.Cmd):
             B = BaseModel()
             B.save()
             print(B.id)
-        
+            
+    def do_all(self,line):
+        """prints all string representation of all instances 
+        based or not on the class name"""
+        args = shlex.split(line)
+        if (len(args) == 0 or args[0] == "BaseModel"):
+            inst_dict = storage.all()
+            for key in inst_dict:
+                obj = inst_dict[key]
+                print(obj.__str__())
+            
+        elif (len(args) > 1 and args[0] != "BaseModel"):
+            print("** class doesn't exist **")   
 
       
 if __name__ == '__main__':

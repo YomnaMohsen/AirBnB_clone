@@ -22,11 +22,16 @@ class BaseModel:
             models.storage.new(self)
         else:
             for key, val in kwargs.items():
+                #print ("in init", key, val)
                 if (key != '__class__'):
                     if (key != 'updated_at' and key != 'created_at'):
-                        self.__dict__[key] = val
+                      #  self.__dict__[key] = val
+                      setattr(self, key, val)
                     else:
-                        self.__dict__[key] = datetime.fromisoformat(val)
+                        #self.__dict__[key] = datetime.fromisoformat(val)
+                        setattr(self, key, datetime.fromisoformat(val))
+                else:
+                    continue;        
 
     def __str__(self):
         """custom __str__ fn"""
