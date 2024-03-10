@@ -53,6 +53,7 @@ class HBNBCommand(cmd.Cmd):
             for obj in inst_dict.values():
                 if (len(args) == 0 or args[0] == obj.__class__.__name__):
                     l_obj.append(obj.__str__())
+            print(l_obj)        
                   
         
     def do_show(self, line):
@@ -71,7 +72,8 @@ class HBNBCommand(cmd.Cmd):
         else:
             print(inst_dict["{}.{}".format(args[0], args[1])])
             
-          
+    #def do_destroy():
+     #   """"""        
      
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
