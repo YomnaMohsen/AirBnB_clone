@@ -42,22 +42,21 @@ class FileStorage:
 
         """ we must create empty dict first then convert obj to dict and
         add to empty dict , so not modify __objects."""
-
-             
         with open(FileStorage.__file_path, "w", encoding="utf-8") as f:
-            dict = {key: val.to_dict() for key, val in FileStorage.__objects.items()}
+            dict = {key: val.to_dict() for key, val
+                    in FileStorage.__objects.items()}
             json.dump(dict, f)
 
     def reload(self):
         """deserializes the JSON file to __objects
         (only if the JSON file (__file_path) exists"""
-        obj_dictionary= {}
+        obj_dictionary = {}
         try:
             with open(FileStorage.__file_path, "r") as file:
                 obj_dictionary = json.load(file)
             for key, val in obj_dictionary.items():
                 cls_name = val["__class__"]
-                cls_obj = eval (cls_name)(**obj_dictionary)
-                FileStorage.__objects[key] = cls_obj   
+                cls_obj = eval(cls_name)(**obj_dictionary)
+                FileStorage.__objects[key] = cls_obj
         except FileNotFoundError:
             pass
