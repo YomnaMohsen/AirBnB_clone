@@ -50,9 +50,27 @@ class HBNBCommand(cmd.Cmd):
                 obj = inst_dict[key]
                 print(obj.__str__())
             
-        elif (len(args) > 1 and args[0] != "BaseModel"):
-            print("** class doesn't exist **")   
+        elif (len(args) > 0 and args[0] != "BaseModel"):
+            print("** class doesn't exist **")
+        
+    def do_show(self, line):
+        """Prints the string representation of an instance 
+        based on the class name and id"""
+        args = shlex.split(line)
+        inst_dict = storage.all()
+        if (len(args) < 1):
+            print("** class name missing **")
+        elif (args[0] != "BaseModel"):
+            print("** class doesn't exist **")  
+        elif (len(args) < 2):
+            print("** instance id missing **")
+        elif ("{}.{}".format(args[0], args[1]) not in inst_dict.keys()):
+            print("** no instance found **")     
+        else:
+            print(inst_dict["{}.{}".format(args[0], args[1])])
+                 
+               
 
-      
+     
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
