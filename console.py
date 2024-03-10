@@ -15,7 +15,7 @@ class HBNBCommand(cmd.Cmd):
         parse and execute commands
     """
     prompt = "(hbnb) "
-    __classes ={"Base_Model"}
+    __classes ={"BaseModel"}
 
     def do_EOF(self, line):
         """EOF command to exit the program"""
