@@ -15,6 +15,7 @@ class HBNBCommand(cmd.Cmd):
         parse and execute commands
     """
     prompt = "(hbnb) "
+    __classes ={"Base_Model"}
 
     def do_EOF(self, line):
         """EOF command to exit the program"""
@@ -33,25 +34,26 @@ class HBNBCommand(cmd.Cmd):
         args = shlex.split(line)
         if(len(args) < 1):
             print("** class name missing **")
-        elif args[0] != "BaseModel":
+        elif args[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
         else:
-            B = BaseModel()
-            B.save()
-            print(B.id)
+            print(eval(args[0].id))
+            storage.save()
             
     def do_all(self,line):
         """prints all string representation of all instances 
         based or not on the class name"""
+        l_obj = []
         args = shlex.split(line)
-        if (len(args) == 0 or args[0] == "BaseModel"):
-            inst_dict = storage.all()
-            for key in inst_dict:
-                obj = inst_dict[key]
-                print(obj.__str__())
-            
-        elif (len(args) > 0 and args[0] != "BaseModel"):
+        inst_dict = storage.all()
+        
+        if (len(args) > 0 and args[0] not in HBNBCommand.__classes):
             print("** class doesn't exist **")
+        else: 
+            for obj in inst_dict.values():
+                if (len(args) == 0 or args[0] == obj.__class__.__name__):
+                    l_obj.append(obj.__str())
+                  
         
     def do_show(self, line):
         """Prints the string representation of an instance 
@@ -60,7 +62,7 @@ class HBNBCommand(cmd.Cmd):
         inst_dict = storage.all()
         if (len(args) < 1):
             print("** class name missing **")
-        elif (args[0] != "BaseModel"):
+        elif (args[0] not in HBNBCommand.__classes):
             print("** class doesn't exist **")  
         elif (len(args) < 2):
             print("** instance id missing **")
@@ -68,9 +70,6 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")     
         else:
             print(inst_dict["{}.{}".format(args[0], args[1])])
-                 
-               
-
      
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
