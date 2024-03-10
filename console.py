@@ -13,19 +13,13 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
     def do_EOF(self, line):
-        """function handles EOF command"""
+        """EOF command to exit the program"""
         return True
                 
     def do_quit(self, line):
-        """function handles quit command"""
+        """Quit command to exit the program"""
         return True
-    
-    def emptyline(self):
-        """prints empty line"""
-        pass
-         
-    def help_EOF(self):
-        print("EOF (end of file) command to exit the program")   
+      
     
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
