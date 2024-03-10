@@ -43,12 +43,10 @@ class FileStorage:
         """ we must create empty dict first then convert obj to dict and
         add to empty dict , so not modify __objects."""
 
-        obj_dict = {}
-        for key, val in FileStorage.__objects.items():
-            obj_dict[key] = val.to_dict()    
-        json_str = json.dumps(obj_dict)  
+             
         with open(FileStorage.__file_path, "w", encoding="utf-8") as f:
-            f.write(json_str)
+            dict = {key: val.to_dict() for key, val in FileStorage.__objects.items()}
+            json.dump(dict, f)
 
     def reload(self):
         """deserializes the JSON file to __objects
