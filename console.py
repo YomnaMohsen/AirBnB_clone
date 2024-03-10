@@ -23,10 +23,7 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """prints empty line"""
         pass
-    
-    def help_quit(self):
-        print("Quit command to exit the program")
-        
+         
     def help_EOF(self):
         print("EOF (end of file) command to exit the program")   
     
