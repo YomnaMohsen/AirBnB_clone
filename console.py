@@ -10,7 +10,7 @@ class HBNBCommand(cmd.Cmd):
         cmd.Cmd (class): class Cmd that conatins fn that
         parse and execute commands
     """
-    prompt = "(Hbnb)"
+    prompt = "(Hbnb) "
 
     def do_EOF(self, line):
         """function handles EOF command"""
@@ -19,6 +19,10 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, line):
         """function handles quit command"""
         return True
+    
+    def emptyline(self):
+        """prints empty line"""
+        pass
     
     def help_quit(self):
         print("Quit command to exit the program")
