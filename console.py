@@ -2,6 +2,8 @@
 """contains the entry point of the command interpreter"""
 
 import cmd
+from models.base_model import BaseModel
+import shlex
 
 
 class HBNBCommand(cmd.Cmd):
@@ -24,6 +26,19 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """prints empty line"""
         pass
+    
+    def do_create(self, line):
+        """create new instances from different classes"""
+        args = shlex.split(line)
+        if(len(args) < 1):
+            print("** class name missing **")
+        elif args[0] != "BaseModel":
+            print("** class doesn't exist **")
+        else:
+            B = BaseModel()
+            B.save()
+            print(B.id)
+        
 
       
 if __name__ == '__main__':
