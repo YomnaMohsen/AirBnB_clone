@@ -52,7 +52,7 @@ class HBNBCommand(cmd.Cmd):
         else: 
             for obj in inst_dict.values():
                 if (len(args) == 0 or args[0] == obj.__class__.__name__):
-                    l_obj.append(obj.__str())
+                    l_obj.append(obj.__str__())
                   
         
     def do_show(self, line):
@@ -70,6 +70,8 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")     
         else:
             print(inst_dict["{}.{}".format(args[0], args[1])])
+            
+          
      
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
