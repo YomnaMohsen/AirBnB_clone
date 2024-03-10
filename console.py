@@ -11,18 +11,14 @@ class HBNBCommand(cmd.Cmd):
         parse and execute commands
     """
     prompt = "(Hbnb)"
+
+    def do_EOF(self, line):
+        """EOF command to exit the program"""
+        return True
+                
+    def do_quit(self, line):
+        """Quit command to exit the program"""
+        return True    
     
-    def postcmd(self, stop: bool, line: str) -> bool:
-
-        if not stop:
-
-            if line.strip() == "quit":
-
-                print("$")
-
-                return True
-
-        return stop
-
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
