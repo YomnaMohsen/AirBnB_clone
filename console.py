@@ -116,6 +116,16 @@ class HBNBCommand(cmd.Cmd):
             key = "{}.{}".format(args[0], args[1])
             setattr(inst_dict[key], args[2], (args[3]))
 
+    def do_count(self, line):
+        """to retrieve the number of instances of a class"""
+        args = shlex.split(line)
+        inst_dict = storage.all()
+        count = 0
+        for obj in inst_dict.values():
+            if (args[0] == obj.__class__._name__):
+                count += 1
+        print(count)
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
