@@ -10,7 +10,7 @@ class HBNBCommand(cmd.Cmd):
         cmd.Cmd (class): class Cmd that conatins fn that
         parse and execute commands
     """
-    prompt = "(Hbnb) "
+    prompt = "(hbnb) "
 
     def do_EOF(self, line):
         """function handles EOF command"""
