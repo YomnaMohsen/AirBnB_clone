@@ -113,7 +113,7 @@ class HBNBCommand(cmd.Cmd):
         elif (len(args) < 4):
             print("** attribute value missing **")
         else:
-           setattr(inst_dict["{}.{}".format(args[0], args[1])],args[2], args[3])       
+           setattr(inst_dict["{}.{}".format(args[0], args[1])],args[2], eval(args[3]))       
      
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
