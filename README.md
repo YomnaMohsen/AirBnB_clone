@@ -19,6 +19,8 @@ It is a program, it behaves like shell, it accepts commands from user then excut
 "(hbnb)" will appear.
 * The user can enter any allowed command or type help command to get info about thsi command
 
+* the interpreter can run in either interactive mode, as described in the above line or in non interactive mode like this echo "help" | ./console.py
+
 # Main components of project:
 
 BaseModel class: the base class for all sub_classes
