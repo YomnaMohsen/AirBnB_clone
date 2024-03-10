@@ -109,7 +109,8 @@ class HBNBCommand(cmd.Cmd):
         else:
             obj = inst_dict["{}.{}".format(args[0], args[1])]
             obj.args[2] = args[3]             
-            inst_dict["{}.{}".format(args[0], args[1])] = obj           
+            inst_dict["{}.{}".format(args[0], args[1])] = obj 
+            storage.save()          
      
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
