@@ -111,7 +111,7 @@ class HBNBCommand(cmd.Cmd):
         elif (len(args) < 3):
             print("** attribute name missing **")
         elif (len(args) < 4):
-            print("** attribute value missing **")
+            print("** value missing **")
         else:
             key = "{}.{}".format(args[0], args[1])
             setattr(inst_dict[key], args[2], (args[3]))
