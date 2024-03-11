@@ -15,15 +15,15 @@ class BaseModel:
         args(unused): tuple of variables
         kwargs: (dict) key/val pairs of attributes
        """
-        if not kwargs:
+        if not kwargs or len(kwargs) == 0:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             models.storage.new(self)
         else:
             for key, val in kwargs.items():
-                if (key != '__class__'):
-                    if (key != 'updated_at' and key != 'created_at'):
+                if (key != "__class__"):
+                    if (key != "updated_at" and key != 'created_at'):
                         setattr(self, key, val)
                     else:
                         setattr(self, key, datetime.fromisoformat(val))
@@ -32,7 +32,7 @@ class BaseModel:
 
     def __str__(self):
         """custom __str__ fn"""
-        return f"[{self.__class__.__name__}] ({self.id}) <{self.__dict__}>"
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
         """updates the public instance attribute

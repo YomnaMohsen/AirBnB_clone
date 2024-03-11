@@ -15,12 +15,12 @@ class FileStorage:
     """serializes instances to a JSON file and
     deserializes JSON file to instances
 
-    class args:
+     Args:
     __file_path: string - path to the JSON file
      __objects: dictionary - empty but will store all objects
             by <class name>.id
     """
-    __file_path = ""
+    __file_path = "./file.json"
     __objects = {}
 
     def all(self):
@@ -35,15 +35,14 @@ class FileStorage:
         obj: user defined object
         """
         name = obj.__class__.__name__
-        FileStorage.__objects[name + "." + obj.id] = obj
+        FileStorage.__objects[name + "." + str(obj.id)] = obj
 
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
 
         """ we must create empty dict first then convert obj to dict and
         add to empty dict , so not modify __objects."""
-        FileStorage.__file_path = "file.json"
-        with open(FileStorage.__file_path, "w", encoding="utf-8") as f:
+        with open(FileStorage.__file_path, "w") as f:
             dict = {key: val.to_dict() for key, val
                     in FileStorage.__objects.items()}
             json.dump(dict, f)
@@ -54,10 +53,10 @@ class FileStorage:
         obj_dictionary = {}
         try:
             with open(FileStorage.__file_path, "r") as file:
-                obj_dictionary = json.load(file)
-            for key, val in obj_dictionary.items():
-                cls_name = val["__class__"]
-                cls_obj = eval(cls_name)(**obj_dictionary)
+                obj_dictionary = json.loads(file.read())
+            for key, obj in obj_dictionary.items():
+                cls_name = obj["__class__"]
+                cls_obj = eval(cls_name)(**obj)
                 FileStorage.__objects[key] = cls_obj
         except FileNotFoundError:
             pass
