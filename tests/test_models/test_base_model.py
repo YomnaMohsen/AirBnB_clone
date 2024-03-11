@@ -16,7 +16,7 @@ class Test_Base(unittest.TestCase):
         
     def test_datetime(self):
         B1 = BaseModel()
-        self.assertEqual(datetime.now(), B1.created_at)    
+        self.assertIsInstance(B1.created_at, datetime)    
 
 if __name__ == '__main__':
     unittest.main()
