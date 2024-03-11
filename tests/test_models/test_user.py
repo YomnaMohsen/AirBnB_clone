@@ -6,7 +6,7 @@ import unittest
 from models.user import User
 
 
-class Test_Base(unittest.TestCase):
+class Test_user(unittest.TestCase):
     """Defines user class test cases"""
     def check_type(self):
         u = User()
