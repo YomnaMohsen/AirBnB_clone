@@ -24,7 +24,8 @@ class FileStorage:
     __objects = {}
 
     def all(self):
-        """returns the dictionary __objects"""
+        """returns the dictionary __objects
+        """
         return FileStorage.__objects
 
     def new(self, obj):
@@ -38,10 +39,11 @@ class FileStorage:
         FileStorage.__objects[name + "." + str(obj.id)] = obj
 
     def save(self):
-        """serializes __objects to the JSON file (path: __file_path)"""
+        """serializes __objects to the JSON file (path: __file_path)
 
-        """ we must create empty dict first then convert obj to dict and
-        add to empty dict , so not modify __objects."""
+         we must create empty dict first then convert obj to dict and
+        add to empty dict , so not modify __objects.
+        """
         with open(FileStorage.__file_path, "w") as f:
             dict = {key: val.to_dict() for key, val
                     in FileStorage.__objects.items()}
@@ -49,7 +51,8 @@ class FileStorage:
 
     def reload(self):
         """deserializes the JSON file to __objects
-        (only if the JSON file (__file_path) exists"""
+        (only if the JSON file (__file_path) exists
+        """
         obj_dictionary = {}
         try:
             with open(FileStorage.__file_path, "r") as file:
