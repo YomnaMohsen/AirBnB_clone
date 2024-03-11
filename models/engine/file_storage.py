@@ -53,7 +53,6 @@ class FileStorage:
         """deserializes the JSON file to __objects
         (only if the JSON file (__file_path) exists"""
 
-        obj_dictionary = {}
         try:
             with open(FileStorage.__file_path, "r") as file:
                 obj_dictionary = json.loads(file.read())
