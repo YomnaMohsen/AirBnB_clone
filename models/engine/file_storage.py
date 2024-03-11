@@ -20,7 +20,7 @@ class FileStorage:
      __objects: dictionary - empty but will store all objects
             by <class name>.id
     """
-    __file_path = "file.json"
+    __file_path = ""
     __objects = {}
 
     def all(self):
@@ -42,6 +42,7 @@ class FileStorage:
 
         """ we must create empty dict first then convert obj to dict and
         add to empty dict , so not modify __objects."""
+        FileStorage.__file_path = "file.json"
         with open(FileStorage.__file_path, "w", encoding="utf-8") as f:
             dict = {key: val.to_dict() for key, val
                     in FileStorage.__objects.items()}
