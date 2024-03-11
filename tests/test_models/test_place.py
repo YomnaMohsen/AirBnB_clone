@@ -3,11 +3,15 @@
 
 import json
 import unittest
-from models.base_model import BaseModel
+from models.place import Place
 
 
 class Test_Base(unittest.TestCase):
-    """Defines Base class test cases"""
+    """Defines place class test cases"""
+    """Defines user class test cases"""
+    def check_type(self):
+        p = Place()
+        self.assertIsInstance(p, Place)
 
 if __name__ == '__main__':
     unittest.main()

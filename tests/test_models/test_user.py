@@ -7,7 +7,7 @@ from models.user import User
 
 
 class Test_Base(unittest.TestCase):
-    """Defines Base class test cases"""
+    """Defines user class test cases"""
     def check_type(self):
         u = User()
         self.assertIsInstance(u, User)
