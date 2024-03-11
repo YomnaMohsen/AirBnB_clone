@@ -5,12 +5,12 @@ from models.base_model import BaseModel
 
 
 class City(BaseModel):
-    """class City that inherits from BaseModel"""
+    """class City that inherits from BaseModel
+        Args:
+        
+        state_id: string - empty string: it will be the State.id
+        name: string - empty string
+    """
 
-    state_id = None
-    name = None
-
-    def __init__(self, *args, **kwargs):
-        """Initializes user object
-        """
-        super().__init__(*args, **kwargs)
+    state_id = ""
+    name = ""

@@ -5,11 +5,10 @@ from models.base_model import BaseModel
 
 
 class State(BaseModel):
-    """class State that inherits from BaseModel"""
+    """
+    class State that inherits from BaseModel
+    Args:
+    name: string - empty string
+    """
 
-    name = None
-
-    def __init__(self, *args, **kwargs):
-        """Initializes user object
-        """
-        super().__init__(*args, **kwargs)
+    name = ""
