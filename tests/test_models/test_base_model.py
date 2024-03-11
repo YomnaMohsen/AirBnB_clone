@@ -16,7 +16,13 @@ class Test_Base(unittest.TestCase):
         
     def test_datetime(self):
         B1 = BaseModel()
-        self.assertIsInstance(B1.created_at, datetime)    
+        self.assertIsInstance(B1.created_at, datetime)
+        self.assertIsInstance(B1.updated_at, datetime)
+    
+    def test_todict(self):
+        B = BaseModel()
+        dict1 = B.to_dict()
+        self.assertIsInstance(dict1, dict)       
 
 if __name__ == '__main__':
     unittest.main()
