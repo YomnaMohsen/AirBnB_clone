@@ -12,11 +12,6 @@ class Review(BaseModel):
         text: string - empty string
     """
 
-    place_id = None
-    user_id = None
-    text = None
-
-    def __init__(self, *args, **kwargs):
-        """Initializes user object
-        """
-        super().__init__(*args, **kwargs)
+    place_id = ""
+    user_id = ""
+    text = ""
