@@ -11,8 +11,11 @@ from models import storage
 class Test_FileStorage(unittest.TestCase):
     """Defines FileStorage class test cases"""
     
+    
     def test_type(self):
         self.assertIsInstance(storage.all(), dict)
+        self.assertIsInstance(FileStorage._FileStorage__objects, dict)
+        self.assertIsInstance(FileStorage._FileStorage__file_path, str)
         
     
     def test_newobj(self):
