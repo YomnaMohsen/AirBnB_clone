@@ -5,6 +5,8 @@ import json
 import unittest
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
+from models.user import User
+from models.city import City
 from models import storage
 
 
@@ -30,7 +32,7 @@ class Test_FileStorage(unittest.TestCase):
     def test_save(self):
            my_model = BaseModel()
            storage.new(my_model)
-           storage.save()
+           my_model.save()
            f_text = ""
            with open("file.json", "r") as f:
                f_text = f.read()
@@ -39,10 +41,16 @@ class Test_FileStorage(unittest.TestCase):
     def test_reload(self):
         my_model = BaseModel()
         storage.new(my_model)
+        U = User()
+        storage.new(U)
+        C1 = City()
+        storage.new(C1)
         storage.save()
         storage.reload()
         l_obj = storage.all()
         self.assertIn("BaseModel." +my_model.id, l_obj.keys())
+        self.assertIn("City." +C1.id, l_obj.keys())
+        self.assertIn("User." +U.id, l_obj.keys())
            
                    
 
