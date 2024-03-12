@@ -8,14 +8,16 @@ from models.base_model import BaseModel
 from models import storage
 
 
-class Test_Amenity(unittest.TestCase):
+class Test_FileStorage(unittest.TestCase):
     """Defines FileStorage class test cases"""
     
     def test_type(self):
         self.assertIsInstance(storage.all(), dict)
+        
     
     def test_newobj(self):
-        my_model = BaseModel()        
+        my_model = BaseModel() 
+        storage.new(my_model)       
         name = my_model.__class__.__name__
         key = name + '.' + my_model.id
         l_obj = storage.all()

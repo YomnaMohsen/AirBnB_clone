@@ -8,7 +8,7 @@ from models.city import City
 
 class Test_City(unittest.TestCase):
     """Defines City class test cases"""
-    def check_type(self):
+    def test_type(self):
         C = City()
         self.assertIsInstance(C, City)
     

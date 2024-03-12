@@ -8,7 +8,7 @@ from models.place import Place
 
 class Test_place(unittest.TestCase):
     """Defines place class test cases"""
-    def check_type(self):
+    def test_type(self):
         p = Place()
         self.assertIsInstance(p, Place)
         

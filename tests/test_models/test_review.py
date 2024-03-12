@@ -9,7 +9,7 @@ from models.review import Review
 class Test_Review(unittest.TestCase):
     """Defines Review class test cases"""
     """Defines state class test cases"""
-    def check_type(self):
+    def test_type(self):
         R = Review()
         self.assertIsInstance(R, Review)
         self.assertEqual(R, type(Review()))

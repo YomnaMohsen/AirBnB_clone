@@ -8,7 +8,7 @@ from models.amenity import Amenity
 
 class Test_Amenity(unittest.TestCase):
     """Defines Amentiy class test cases"""
-    def check_type(self):
+    def test_type(self):
         A1 = Amenity()
         self.assertIsInstance(A1, Amenity)
     

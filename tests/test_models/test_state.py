@@ -8,7 +8,7 @@ from models.state import State
 
 class Test_state(unittest.TestCase):
     """Defines state class test cases"""
-    def check_type(self):
+    def test_type(self):
         s = State()
         self.assertIsInstance(s, State)
     
