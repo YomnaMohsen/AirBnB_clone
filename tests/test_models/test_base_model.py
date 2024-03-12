@@ -21,7 +21,14 @@ class Test_Base(unittest.TestCase):
     def test_todict(self):
         B = BaseModel()
         dict1 = B.to_dict()
-        self.assertIsInstance(dict1, dict)       
+        self.assertIsInstance(dict1, dict)
+        
+    def test_save(self):
+        B1 = BaseModel()
+        old_date = B1.updated_at
+        B1.save()
+        new_date = B1.updated_at
+        self.assertNotEquals(old_date, new_date)          
 
 if __name__ == '__main__':
     unittest.main()
