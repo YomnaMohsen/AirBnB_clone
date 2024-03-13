@@ -17,7 +17,7 @@ class Test_FileStorage(unittest.TestCase):
     def test_type(self):
         self.assertIsInstance(storage.all(), dict)
         self.assertIsInstance(FileStorage._FileStorage__objects, dict)
-        #self.assertIsInstance(FileStorage._FileStorage__file_path, str)
+        self.assertIsInstance(FileStorage._FileStorage__file_path, str)
         
     
     def test_newobj(self):
