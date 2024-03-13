@@ -12,7 +12,7 @@ class Test_Review(unittest.TestCase):
     def test_type(self):
         R = Review()
         self.assertIsInstance(R, Review)
-        self.assertEqual(R, type(Review()))
+        self.assertEqual(R, type(Review))
     
     def test_args(self):
         R1 = Review()
