@@ -1,0 +1,1 @@
+This folder contains subtasks for desgining static web pages using html and css for airbnb console project. 
